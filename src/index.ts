@@ -1,25 +1,19 @@
-import { App, Stack, Duration, RemovalPolicy } from '@aws-cdk/core';
+import { App, Stack, RemovalPolicy } from '@aws-cdk/core';
 import { Bucket, BlockPublicAccess } from '@aws-cdk/aws-s3'
-import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 
 const app = new App();
-const stack = new Stack(app, 'issue-16658');
+const stack = new Stack(app, 'issue-16603');
 
-const bucket = new Bucket(stack, 'issue-16658-test-bucket', {
-  bucketName: 'issue-16658-test-bucket',
+const bucket = new Bucket(stack, 'Issue16603TestBucket', {
+  bucketName: 'issue-16603-test-bucket',
   blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-  lifecycleRules: [{
-    abortIncompleteMultipartUploadAfter: Duration.days(2),
-    enabled: true,
-    expiration: Duration.days(60),
-    prefix: "logs/"
-  }],
-  removalPolicy: RemovalPolicy.RETAIN,
+  removalPolicy: RemovalPolicy.DESTROY,
+  autoDeleteObjects: true
 });
 
-new BucketDeployment(stack, "deploySystem", {
-  sources: [Source.asset("assets")],
-  destinationBucket: bucket,
-  retainOnDelete: true,
-  prune: false,
-});
+// new BucketDeployment(stack, "DeployAssets", {
+//   sources: [Source.asset("assets")],
+//   destinationBucket: bucket,
+//   retainOnDelete: true,
+//   prune: false,
+// });

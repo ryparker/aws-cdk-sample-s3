@@ -1,8 +1,8 @@
 {
-  "name": "aws-cdk-sample-eks",
+  "name": "aws-cdk-sample-s3",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://ryparker@github.com/ryparker/aws-cdk-sample-eks.git",
+  "repository": "https://ryparker@github.com/ryparker/aws-cdk-sample-s3.git",
   "author": "Ryan Parker <ryan.parker3@outlook.com>",
   "license": "MIT",
   "scripts": {
