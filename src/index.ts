@@ -7,8 +7,8 @@ const stack = new Stack(app, 'issue-16603');
 const bucket = new Bucket(stack, 'Issue16603TestBucket', {
   bucketName: 'issue-16603-test-bucket',
   blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-  removalPolicy: RemovalPolicy.DESTROY,
-  autoDeleteObjects: true
+  removalPolicy: RemovalPolicy.RETAIN,
+  autoDeleteObjects: false
 });
 
 // new BucketDeployment(stack, "DeployAssets", {
